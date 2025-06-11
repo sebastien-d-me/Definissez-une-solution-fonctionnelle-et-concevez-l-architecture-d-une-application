@@ -10,10 +10,12 @@
 .conversation__history {
     height: 500px;
     overflow-y: scroll;
+    padding: 0 10px;
 }
 
 /* Message */
 app-message {
+    border-radius: 10px;
     display: block;
     margin-bottom: 20px;
 

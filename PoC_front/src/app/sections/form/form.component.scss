@@ -46,6 +46,10 @@
     }
 }
 
+.form__input[disabled] {
+    cursor: not-allowed;
+}
+
 textarea.form__input {
     min-height: 200px;
     resize: none;

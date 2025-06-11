@@ -16,7 +16,7 @@ export class ConversationComponent {
         this.currentView = order;
     }
 
-    switchOrder(authorId: number): "left" | "right" {
-        return authorId === this.currentView ? "left" : "right";
+    switchOrder(authorId: number): "#7EBEFF" | "#FFAB79" {
+        return authorId === this.currentView ? "#7EBEFF" : "#FFAB79";
     }
 }

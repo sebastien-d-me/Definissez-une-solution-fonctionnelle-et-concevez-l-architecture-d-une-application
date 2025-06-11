@@ -1,16 +1,16 @@
 <form action="#" class="form__block" method="POST">
     <div class="form__row">
-        <label class="form__label" for="form__username">Pseudonyme</label>
-        <input class="form__input" id="form__username" type="text">
+        <label class="form__label" for="form__fullname">Nom complet</label>
+        <input disabled class="form__input" id="form__fullname" type="text" [value]=defaultName>
     </div>
     <div class="form__row">
         <span class="form__label">Choix de l'utilisateur</span>
         <div class="form__row--flex">
-            <input class="form__input form__input--radio" id="form__choose_user" name="form__choose_who" type="radio">
-            <label for="form__choose_user">Utilisateur</label>
+            <input (click)="changeUser('user')" class="form__input form__input--radio" id="form__choose_user" name="form__choose_who" type="radio">
+            <label for="form__choose_user">Utilisateur simple</label>
         </div>
         <div class="form__row--flex">
-            <input class="form__input form__input--radio" id="form__choose_admin" name="form__choose_who" type="radio">
+            <input (click)="changeUser('admin')" class="form__input form__input--radio" id="form__choose_admin" name="form__choose_who" type="radio">
             <label for="form__choose_admin">Administrateur</label>
         </div>
     </div>

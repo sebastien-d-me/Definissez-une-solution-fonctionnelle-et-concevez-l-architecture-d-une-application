@@ -1,13 +1,16 @@
 import { Component } from '@angular/core';
-import { InputLabelComponent } from "../../components/input-label/input-label.component";
 
 @Component({
   selector: 'app-form',
   standalone: true,
-  imports: [InputLabelComponent],
+  imports: [],
   templateUrl: './form.component.html',
   styleUrl: './form.component.scss'
 })
 export class FormComponent {
+    defaultName: string = "Choisir un type d'utilisateur";
 
+    changeUser(user: string) {
+        this.defaultName = user === "user" ? "Martin DUPONT" : "John DOE";
+    }
 }
