@@ -24,8 +24,14 @@ app-message {
 
 /* View */
 .conversation__view {
+    align-items: center;
     display: flex;
     gap: 0 15px;
+    justify-content: center;
+}
+
+.conversation__view > span {
+    font-weight: bold;
 }
 
 .conversation__view__align {

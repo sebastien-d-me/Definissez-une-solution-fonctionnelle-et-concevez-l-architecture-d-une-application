@@ -1,6 +1,7 @@
 /* Order */
-.message--right {
-    text-align: right;
+.message {
+    display: flex;
+    flex-direction: column;
 }
 
 /* Author */

@@ -9,12 +9,13 @@ import { Component, Input } from '@angular/core';
 })
 
 export class MessageComponent {
-    @Input() author!: string;
+    @Input() authorId!: number;
+    @Input() authorName!: string;
     @Input() message!: string;
-    @Input() order: number = 0;
     @Input() time!: string;
 
+    
     ngOnInit() {
-        this.author = this.order === 0 ? "Martin DUPONT" : "John DOE";
+        this.authorName = this.authorId === 0 ? "Martin DUPONT" : "John DOE";
     }
 }

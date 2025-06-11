@@ -10,5 +10,13 @@ import { DividerComponent } from "../../components/divider/divider.component";
   styleUrl: './conversation.component.scss'
 })
 export class ConversationComponent {
+    currentView: number = 0;
 
+    changeView(order: number) {
+        this.currentView = order;
+    }
+
+    switchOrder(authorId: number): "left" | "right" {
+        return authorId === this.currentView ? "left" : "right";
+    }
 }
