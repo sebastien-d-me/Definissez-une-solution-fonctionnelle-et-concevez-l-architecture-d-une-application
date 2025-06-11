@@ -1,10 +1,37 @@
+/* Main */
 .main__block {
     align-items: center;
-    background-color: #FFFFFF;
     border-radius: 5px;
+    display: flex;
     filter: drop-shadow(0 0 5px #92929280);
+    gap: 25px 50px;
     justify-content: center;
     max-width: 100%;
     padding: 10px 15px;
-    width: 425px;
+    width: 80%;
+}
+
+/* Conversation */
+app-conversation {
+    align-items: center;
+    display: flex;
+    max-height: 500px;
+    width: 100%;
+}
+
+/* Form */
+app-form {
+    align-items: center;
+    display: flex;
+    height: 500px;
+    width: 100%;
+}
+
+/** Responsive **/
+@media screen and (max-width: 1480px){
+    /* Main */
+    .main__block {
+        flex-direction: column;
+        width: 100%;
+    }
 }
