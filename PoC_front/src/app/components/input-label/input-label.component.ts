@@ -9,11 +9,6 @@ import { Component, Input } from '@angular/core';
 })
 
 export class InputLabelComponent {
-    @Input() label: string;
-    @Input() type: string;
-
-    constructor() {
-        this.label = "";
-        this.type = "";
-    }
+    @Input() label!: string;
+    @Input() type!: string;
 }

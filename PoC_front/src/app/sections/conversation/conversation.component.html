@@ -1,9 +1,27 @@
 <div class="conversation__block">
-    <app-message />
-    <app-message />
-    <app-message />
-    <app-message />
-    <app-message />
-    <app-message />
-    <app-message />
+    <div class="conversation__history">
+        <app-message message="Lorem ipsum dolor sit amet, consectetur adipiscing elit." [order]=0 time="20h00" />
+        <app-message message="Proin mattis turpis quis ultricies consectetur." [order]=1 time="20h02" />
+        <app-message message="Etiam quis volutpat tellus." [order]=0 time="20h03" />
+        <app-message message="Integer eget justo et mauris blandit porta." [order]=0 time="20h05" />
+        <app-message message="Maecenas a felis non quam ultrices iaculis." [order]=1 time="20h07" />
+        <app-message message="Mauris sagittis faucibus nisi, a tristique magna eleifend vitae." [order]=1 time="20h10" />
+        <app-message message="Cras non cursus quam, vitae commodo magna." [order]=0 time="20h11" />
+        <app-message message="Nunc est sapien, placerat id velit vitae, dictum cursus mauris." [order]=1 time="20h13" />
+        <app-message message="Praesent ac blandit nisi." [order]=0 time="20h15" />
+    </div>
+
+    <app-divider />
+
+    <div class="conversation__view">
+        <span>Aperçu côté :</span>
+        <div class="conversation__view__align">
+            <input class="form__input--radio" id="form__choose_user" name="form__choose_who" type="radio">
+            <label for="form__choose_user">Utilisateur</label>
+        </div>
+        <div class="conversation__view__align">
+            <input class="form__input--radio" id="form__choose_admin" name="form__choose_who" type="radio">
+            <label for="form__choose_admin">Administrateur</label>
+        </div>
+    </div>
 </div>

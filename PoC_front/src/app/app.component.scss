@@ -11,27 +11,26 @@
     width: 80%;
 }
 
-/* Conversation */
-app-conversation {
+/* Conversation & Form */
+app-conversation,
+app-form {
     align-items: center;
     display: flex;
     max-height: 500px;
     width: 100%;
 }
 
-/* Form */
-app-form {
-    align-items: center;
-    display: flex;
-    height: 500px;
-    width: 100%;
-}
-
 /** Responsive **/
-@media screen and (max-width: 1480px){
+@media screen and (max-width: 800px){
     /* Main */
     .main__block {
         flex-direction: column;
         width: 100%;
+    }
+
+    /* Conversation & Form */
+    app-conversation,
+    app-form {
+        max-height: unset;
     }
 }

@@ -5,3 +5,38 @@
     padding: 20px 15px;
     width: 100%;
 }
+
+/* History */
+.conversation__history {
+    height: 500px;
+    overflow-y: scroll;
+}
+
+/* Message */
+app-message {
+    display: block;
+    margin-bottom: 20px;
+
+    &:last-of-type {
+        margin-bottom: 0;
+    }
+}
+
+/* View */
+.conversation__view {
+    display: flex;
+    gap: 0 15px;
+}
+
+.conversation__view__align {
+    align-items: center;
+    display: flex;
+    gap: 0 5px;
+}
+
+.form__input--radio {
+    display: flex;
+    height: 15px;
+    padding: 5px 10px;
+    width: 15px;
+}
