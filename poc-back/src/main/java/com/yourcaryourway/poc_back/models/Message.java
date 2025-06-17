@@ -1,7 +1,6 @@
 package com.yourcaryourway.poc_back.models;
 
 import java.sql.Date;
-
 import lombok.Data;
 
 @Data
