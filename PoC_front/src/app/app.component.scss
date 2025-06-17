@@ -20,6 +20,130 @@ app-form {
     width: 100%;
 }
 
+/* Conversation */
+.conversation__block {
+    background-color: #FFFFFF;
+    min-height: 500px;
+    padding: 20px 15px;
+    width: 100%;
+}
+
+.conversation__history {
+    height: 500px;
+    overflow-y: scroll;
+    padding: 0 10px;
+}
+
+app-message {
+    border-radius: 10px;
+    display: block;
+    margin-bottom: 20px;
+
+    &:last-of-type {
+        margin-bottom: 0;
+    }
+}
+
+.conversation__view {
+    align-items: center;
+    display: flex;
+    gap: 0 15px;
+    justify-content: center;
+}
+
+.conversation__view > span {
+    font-weight: bold;
+}
+
+.conversation__view__align {
+    align-items: center;
+    display: flex;
+    gap: 0 5px;
+}
+
+.form__input--radio {
+    display: flex;
+    height: 15px;
+    padding: 5px 10px;
+    width: 15px;
+}
+
+/* Form */
+/* Block */
+.form__block {
+    background-color: #FFFFFF;
+    min-height: 500px;
+    padding: 20px 15px;
+    width: 100%;
+}
+
+/* Row */
+.form__row {
+    display: block;
+    margin-bottom: 20px;
+
+    &--flex {
+        align-items: center;
+        display: flex;
+        gap: 0 10px;
+    }
+
+    &:last-of-type {
+        margin-bottom: unset;
+    }
+}
+
+.form__label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 2.5px;
+
+    &::after {
+        content: " :";
+    }
+}
+
+.form__input {
+    display: block;
+    padding: 5px 10px;
+    width: 100%;
+
+    &--radio {
+        display: flex;
+        height: 15px;
+        width: 15px;
+    }
+}
+
+.form__input[disabled] {
+    cursor: not-allowed;
+}
+
+textarea.form__input {
+    min-height: 200px;
+    resize: none;
+}
+
+.btn {
+    background-color: #060b0f;
+    border: 1px solid transparent;
+    border-radius: 10px;
+    color: #FFFFFF;
+    display: block;
+    font-size: 15px;
+    font-weight: bold;
+    margin: auto;
+    opacity: 0.75;
+    padding: 5px 10px;
+    text-transform: uppercase;
+    transition: 0.5s;
+
+    &:hover {
+        cursor: pointer;
+        opacity: 1;
+    }
+}
+
 /** Responsive **/
 @media screen and (max-width: 800px){
     /* Main */
