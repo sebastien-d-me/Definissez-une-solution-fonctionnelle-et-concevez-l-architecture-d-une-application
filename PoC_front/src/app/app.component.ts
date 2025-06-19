@@ -51,16 +51,24 @@ export class AppComponent {
     }
 
 
-    /* Change the view */
-    currentView: string = "userView";
+    /* Manage the background */
+    manageBackground(author: string) {
+        return author === "Martin DUPONT" ? "#FFAB79" : "#7EBEFF";
+    }
 
-    changeView(newView: string) {
-        this.currentView = newView;
+
+    /* Get the datetime */
+    getDateTime() {
+        let currentDate = new Date();
+        let formattedTimeOnly = `${currentDate.getHours()}:${currentDate.getMinutes()}`;
+        let formattedDateTime = `${new Date().toLocaleDateString()} à ${formattedTimeOnly}`;
+        return formattedDateTime;
     }
 
 
     /* Send the message */
     formMessage: string = "";
+    currentDateTime: string = "";
     messagesList: { 
         author: string; 
         dateTime: string;
@@ -68,9 +76,10 @@ export class AppComponent {
     }[] = [];
 
     sendMessage() {
+        this.currentDateTime = this.getDateTime();
         const message = {
             author: this.selectedUser,
-            dateTime: "",
+            dateTime: this.currentDateTime,
             content: this.formMessage,
             
         };

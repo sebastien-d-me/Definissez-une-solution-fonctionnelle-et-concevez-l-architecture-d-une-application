@@ -11,6 +11,11 @@
     width: 80%;
 }
 
+/* Content */
+.center {
+    text-align: center;
+}
+
 /* Conversation & Form */
 app-conversation,
 app-form {
@@ -29,6 +34,9 @@ app-form {
 }
 
 .conversation__history {
+    display: flex;
+    flex-direction: column;
+    gap: 15px 0;
     height: 500px;
     overflow-y: scroll;
     padding: 0 10px;

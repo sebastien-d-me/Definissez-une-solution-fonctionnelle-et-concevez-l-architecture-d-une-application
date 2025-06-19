@@ -3,22 +3,18 @@
     <div class="conversation__block">
         <div class="conversation__history">
             <div *ngFor="let msg of messagesList; let i = index">
-                <app-message [author]="msg.author" [dateTime]="msg.dateTime" [message]="msg.content"></app-message>
+                <app-message [author]="msg.author" [dateTime]="msg.dateTime" [message]="msg.content" [style.background-color]="manageBackground(msg.author)"></app-message>
             </div>
         </div>
 
         <app-divider />
 
         <div class="conversation__view">
-            <span>Aperçu côté :</span>
-            <div class="conversation__view__align">
-                <input (click)="changeView('userView')" class="form__input--radio" id="form__view_user" name="form__view_who" type="radio" checked>
-                <label for="form__view_user">Utilisateur</label>
-            </div>
-            <div class="conversation__view__align">
-                <input (click)="changeView('adminView')" class="form__input--radio" id="form__view_admin" name="form__view_who" type="radio">
-                <label for="form__view_admin">Administrateur</label>
-            </div>
+            <p class="center">
+                En bleu : les message(s) utilisateur 
+                <br>
+                En orange : les message(s) administrateur
+            </p>
         </div>
     </div>
 

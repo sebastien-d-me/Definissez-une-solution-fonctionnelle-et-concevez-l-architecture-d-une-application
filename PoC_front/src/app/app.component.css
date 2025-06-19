@@ -1,0 +1,161 @@
+/* Main */
+.main__block {
+  align-items: center;
+  border-radius: 5px;
+  display: flex;
+  filter: drop-shadow(0 0 5px rgba(146, 146, 146, 0.5019607843));
+  gap: 25px 50px;
+  justify-content: center;
+  max-width: 100%;
+  padding: 10px 15px;
+  width: 80%;
+}
+
+/* Content */
+.center {
+  text-align: center;
+}
+
+/* Conversation & Form */
+app-conversation,
+app-form {
+  align-items: center;
+  display: flex;
+  max-height: 500px;
+  width: 100%;
+}
+
+/* Conversation */
+.conversation__block {
+  background-color: #FFFFFF;
+  min-height: 500px;
+  padding: 20px 15px;
+  width: 100%;
+}
+
+.conversation__history {
+  display: flex;
+  flex-direction: column;
+  gap: 15px 0;
+  height: 500px;
+  overflow-y: scroll;
+  padding: 0 10px;
+}
+
+app-message {
+  border-radius: 10px;
+  display: block;
+  margin-bottom: 20px;
+}
+app-message:last-of-type {
+  margin-bottom: 0;
+}
+
+.conversation__view {
+  align-items: center;
+  display: flex;
+  gap: 0 15px;
+  justify-content: center;
+}
+
+.conversation__view > span {
+  font-weight: bold;
+}
+
+.conversation__view__align {
+  align-items: center;
+  display: flex;
+  gap: 0 5px;
+}
+
+.form__input--radio {
+  display: flex;
+  height: 15px;
+  padding: 5px 10px;
+  width: 15px;
+}
+
+/* Form */
+/* Block */
+.form__block {
+  background-color: #FFFFFF;
+  min-height: 500px;
+  padding: 20px 15px;
+  width: 100%;
+}
+
+/* Row */
+.form__row {
+  display: block;
+  margin-bottom: 20px;
+}
+.form__row--flex {
+  align-items: center;
+  display: flex;
+  gap: 0 10px;
+}
+.form__row:last-of-type {
+  margin-bottom: unset;
+}
+
+.form__label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 2.5px;
+}
+.form__label::after {
+  content: " :";
+}
+
+.form__input {
+  display: block;
+  padding: 5px 10px;
+  width: 100%;
+}
+.form__input--radio {
+  display: flex;
+  height: 15px;
+  width: 15px;
+}
+
+.form__input[disabled] {
+  cursor: not-allowed;
+}
+
+textarea.form__input {
+  min-height: 200px;
+  resize: none;
+}
+
+.btn {
+  background-color: #060b0f;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  color: #FFFFFF;
+  display: block;
+  font-size: 15px;
+  font-weight: bold;
+  margin: auto;
+  opacity: 0.75;
+  padding: 5px 10px;
+  text-transform: uppercase;
+  transition: 0.5s;
+}
+.btn:hover {
+  cursor: pointer;
+  opacity: 1;
+}
+
+/** Responsive **/
+@media screen and (max-width: 800px) {
+  /* Main */
+  .main__block {
+    flex-direction: column;
+    width: 100%;
+  }
+  /* Conversation & Form */
+  app-conversation,
+  app-form {
+    max-height: unset;
+  }
+}/*# sourceMappingURL=app.component.css.map */
