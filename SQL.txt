@@ -1,0 +1,236 @@
+#------------------------------------------------------------
+#        Script MySQL.
+#------------------------------------------------------------
+
+
+#------------------------------------------------------------
+# Table: Contact_Visio
+#------------------------------------------------------------
+
+CREATE TABLE Contact_Visio(
+        id_contact_visio Int  Auto_increment  NOT NULL ,
+        code             Varchar (25) NOT NULL ,
+        started_at       Datetime NOT NULL ,
+        ended_at         Datetime
+	,CONSTRAINT Contact_Visio_PK PRIMARY KEY (id_contact_visio)
+)ENGINE=InnoDB;
+
+
+#------------------------------------------------------------
+# Table: Contact_Chat
+#------------------------------------------------------------
+
+CREATE TABLE Contact_Chat(
+        id_contact_chat Int  Auto_increment  NOT NULL ,
+        code            Varchar (25) NOT NULL ,
+        started_at      Datetime NOT NULL ,
+        ended_at        Datetime
+	,CONSTRAINT Contact_Chat_PK PRIMARY KEY (id_contact_chat)
+)ENGINE=InnoDB;
+
+
+#------------------------------------------------------------
+# Table: Contact_Form
+#------------------------------------------------------------
+
+CREATE TABLE Contact_Form(
+        id_contact_form Int  Auto_increment  NOT NULL ,
+        started_at      Datetime NOT NULL ,
+        ended_at        Datetime ,
+        status          Varchar (25) NOT NULL ,
+        fullname        Varchar (100) NOT NULL ,
+        email           Varchar (255) NOT NULL ,
+        subject         Varchar (255) NOT NULL ,
+        sender_message  Text NOT NULL
+	,CONSTRAINT Contact_Form_PK PRIMARY KEY (id_contact_form)
+)ENGINE=InnoDB;
+
+
+#------------------------------------------------------------
+# Table: Contact_Chat_Message
+#------------------------------------------------------------
+
+CREATE TABLE Contact_Chat_Message(
+        id_contact_chat_message Int  Auto_increment  NOT NULL ,
+        username                Varchar (255) NOT NULL ,
+        message                 Text NOT NULL ,
+        id_contact_chat         Int NOT NULL
+	,CONSTRAINT Contact_Chat_Message_PK PRIMARY KEY (id_contact_chat_message)
+)ENGINE=InnoDB;
+
+
+#------------------------------------------------------------
+# Table: Contact_Form_Message
+#------------------------------------------------------------
+
+CREATE TABLE Contact_Form_Message(
+        id_contact_form_message Int  Auto_increment  NOT NULL ,
+        message                 Text NOT NULL ,
+        id_contact_form         Int NOT NULL
+	,CONSTRAINT Contact_Form_Message_PK PRIMARY KEY (id_contact_form_message)
+)ENGINE=InnoDB;
+
+
+#------------------------------------------------------------
+# Table: Agencie
+#------------------------------------------------------------
+
+CREATE TABLE Agencie(
+        id_agencie Int  Auto_increment  NOT NULL ,
+        name       Varchar (150)
+	,CONSTRAINT Agencie_PK PRIMARY KEY (id_agencie)
+)ENGINE=InnoDB;
+
+
+#------------------------------------------------------------
+# Table: Vehicle_Category
+#------------------------------------------------------------
+
+CREATE TABLE Vehicle_Category(
+        id_vehicle_category Int  Auto_increment  NOT NULL ,
+        name                Varchar (150)
+	,CONSTRAINT Vehicle_Category_PK PRIMARY KEY (id_vehicle_category)
+)ENGINE=InnoDB;
+
+
+#------------------------------------------------------------
+# Table: Rental
+#------------------------------------------------------------
+
+CREATE TABLE Rental(
+        id_rental           Int  Auto_increment  NOT NULL ,
+        city_departure      Varchar (150) NOT NULL ,
+        city_return         Varchar (150) NOT NULL ,
+        datetime_departure  Datetime NOT NULL ,
+        datetime_return     Datetime NOT NULL ,
+        price               Varchar (25) NOT NULL ,
+        enabled             Bool NOT NULL ,
+        id_vehicle_category Int NOT NULL ,
+        id_agencie          Int NOT NULL
+	,CONSTRAINT Rental_PK PRIMARY KEY (id_rental)
+)ENGINE=InnoDB;
+
+
+#------------------------------------------------------------
+# Table: User
+#------------------------------------------------------------
+
+CREATE TABLE User(
+        id_user              Int  Auto_increment  NOT NULL ,
+        id_user_credentials  Int NOT NULL ,
+        id_user_informations Int NOT NULL
+	,CONSTRAINT User_PK PRIMARY KEY (id_user)
+)ENGINE=InnoDB;
+
+
+#------------------------------------------------------------
+# Table: User_Credentials
+#------------------------------------------------------------
+
+CREATE TABLE User_Credentials(
+        id_user_credentials Int  Auto_increment  NOT NULL ,
+        email               Varchar (255) NOT NULL ,
+        password            Varchar (255) NOT NULL ,
+        id_user             Int NOT NULL
+	,CONSTRAINT User_Credentials_PK PRIMARY KEY (id_user_credentials)
+)ENGINE=InnoDB;
+
+
+#------------------------------------------------------------
+# Table: User_Informations
+#------------------------------------------------------------
+
+CREATE TABLE User_Informations(
+        id_user_informations Int  Auto_increment  NOT NULL ,
+        lastname             Varchar (50) NOT NULL ,
+        firstname            Varchar (50) NOT NULL ,
+        birthdate            Date NOT NULL ,
+        street               Varchar (255) NOT NULL ,
+        zipcode              Int NOT NULL ,
+        city                 Varchar (255) NOT NULL ,
+        id_user              Int NOT NULL
+	,CONSTRAINT User_Informations_PK PRIMARY KEY (id_user_informations)
+)ENGINE=InnoDB;
+
+
+#------------------------------------------------------------
+# Table: Rental_Order
+#------------------------------------------------------------
+
+CREATE TABLE Rental_Order(
+        id_rental_order Int  Auto_increment  NOT NULL ,
+        order_status    Varchar (150) ,
+        payement_status Varchar (150) NOT NULL ,
+        id_rental       Int NOT NULL ,
+        id_user         Int NOT NULL
+	,CONSTRAINT Rental_Order_PK PRIMARY KEY (id_rental_order)
+)ENGINE=InnoDB;
+
+
+
+
+ALTER TABLE Contact_Chat_Message
+	ADD CONSTRAINT Contact_Chat_Message_Contact_Chat0_FK
+	FOREIGN KEY (id_contact_chat)
+	REFERENCES Contact_Chat(id_contact_chat);
+
+ALTER TABLE Contact_Form_Message
+	ADD CONSTRAINT Contact_Form_Message_Contact_Form0_FK
+	FOREIGN KEY (id_contact_form)
+	REFERENCES Contact_Form(id_contact_form);
+
+ALTER TABLE Rental
+	ADD CONSTRAINT Rental_Vehicle_Category0_FK
+	FOREIGN KEY (id_vehicle_category)
+	REFERENCES Vehicle_Category(id_vehicle_category);
+
+ALTER TABLE Rental
+	ADD CONSTRAINT Rental_Agencie1_FK
+	FOREIGN KEY (id_agencie)
+	REFERENCES Agencie(id_agencie);
+
+ALTER TABLE User
+	ADD CONSTRAINT User_User_Credentials0_FK
+	FOREIGN KEY (id_user_credentials)
+	REFERENCES User_Credentials(id_user_credentials);
+
+ALTER TABLE User
+	ADD CONSTRAINT User_User_Informations1_FK
+	FOREIGN KEY (id_user_informations)
+	REFERENCES User_Informations(id_user_informations);
+
+ALTER TABLE User 
+	ADD CONSTRAINT User_User_Credentials0_AK 
+	UNIQUE (id_user_credentials);
+
+ALTER TABLE User 
+	ADD CONSTRAINT User_User_Informations1_AK 
+	UNIQUE (id_user_informations);
+
+ALTER TABLE User_Credentials
+	ADD CONSTRAINT User_Credentials_User0_FK
+	FOREIGN KEY (id_user)
+	REFERENCES User(id_user);
+
+ALTER TABLE User_Credentials 
+	ADD CONSTRAINT User_Credentials_User0_AK 
+	UNIQUE (id_user);
+
+ALTER TABLE User_Informations
+	ADD CONSTRAINT User_Informations_User0_FK
+	FOREIGN KEY (id_user)
+	REFERENCES User(id_user);
+
+ALTER TABLE User_Informations 
+	ADD CONSTRAINT User_Informations_User0_AK 
+	UNIQUE (id_user);
+
+ALTER TABLE Rental_Order
+	ADD CONSTRAINT Rental_Order_Rental0_FK
+	FOREIGN KEY (id_rental)
+	REFERENCES Rental(id_rental);
+
+ALTER TABLE Rental_Order
+	ADD CONSTRAINT Rental_Order_User1_FK
+	FOREIGN KEY (id_user)
+	REFERENCES User(id_user);
