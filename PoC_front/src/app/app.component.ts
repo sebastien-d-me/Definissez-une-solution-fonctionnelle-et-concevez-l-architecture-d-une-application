@@ -15,6 +15,19 @@ import { CommonModule } from "@angular/common";
 })
 
 export class AppComponent {
+    /* Add the message */
+    messagesList: { 
+        author: string; 
+        dateTime: string;
+        content: string; 
+    }[] = [];
+    addMessage(message: IMessage) {
+        const getMessage = JSON.parse(message.body);
+        this.messagesList.push(getMessage);
+    }
+
+
+
     stompClient: Client;
 
     constructor() {
@@ -22,18 +35,10 @@ export class AppComponent {
         this.stompClient = new Client({ webSocketFactory: () => socket });
         this.stompClient.onConnect = () => {
            this.stompClient.subscribe("/topic/messages", (message: IMessage) => {
-                if (message.body) {
-                    JSON.parse(message.body);
-                }
+                this.addMessage(message);
             });
         }
         this.stompClient.activate();
-    }
-
-
-    /* When enter */
-    ngOnEnter() {
-
     }
 
 
@@ -69,11 +74,6 @@ export class AppComponent {
     /* Send the message */
     formMessage: string = "";
     currentDateTime: string = "";
-    messagesList: { 
-        author: string; 
-        dateTime: string;
-        content: string; 
-    }[] = [];
 
     sendMessage() {
         this.currentDateTime = this.getDateTime();
@@ -83,7 +83,6 @@ export class AppComponent {
             content: this.formMessage,
             
         };
-        this.messagesList.push(message);
         this.stompClient.publish({
             body: JSON.stringify(message),
             destination: "/app/chat"
